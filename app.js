@@ -1,59 +1,76 @@
-const flipCard = document.querySelectorAll('.pokemon-front');
-const backCard = document.getElementById('game-board');
-const start = document.querySelector('#start-game');
-const card = document.querySelectorAll('.the-card');
-// const backOfCard = document.getElementsByClassName('card-back');
-let card1 = null;
-let card2 = null;
-let score = 0;
-let cardsToWin = 24;
-let game = false;
+// Wire up event handlers
+document.querySelector('#start-game').addEventListener('click', startNewGame);
+document.querySelectorAll('.the-card').forEach((item) => {
+  item.addEventListener('click', (event) => {
+    // Show flip animation
+    event.target.parentElement.parentElement.classList.toggle('flipped');
 
-let pokemonURLS = [
-  'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png',
-  'https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png',
-  'https://assets.pokemon.com/assets/cms2/img/pokedex/full/015.png',
-  'https://assets.pokemon.com/assets/cms2/img/pokedex/full/054.png',
-  'https://assets.pokemon.com/assets/cms2/img/pokedex/full/093.png',
-  'https://assets.pokemon.com/assets/cms2/img/pokedex/full/125.png',
-  'https://assets.pokemon.com/assets/cms2/img/pokedex/full/024.png',
-  'https://assets.pokemon.com/assets/cms2/img/pokedex/full/068.png',
-  'https://assets.pokemon.com/assets/cms2/img/pokedex/full/104.png',
-  'https://assets.pokemon.com/assets/cms2/img/pokedex/full/005.png',
-  'https://assets.pokemon.com/assets/cms2/img/pokedex/full/073.png',
-  'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png'
+    // Run logic to handle the user action
+    var cardId = item.querySelector(".card-back .pokemon-pic").getAttribute("data-card-id");
+    handleCardFlip(cardId);
+  });
+});
+
+let selectedCardId = null;
+let cards = [{
+  id: 1,
+  url: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png',
+  isMatched: false
+}, {
+  id: 2,
+  url: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png',
+  isMatched: false
+}, {
+  id: 3,
+  url: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/015.png',
+  isMatched: false
+}, {
+  id: 4,
+  url: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/054.png',
+  isMatched: false
+}, {
+  id: 5,
+  url: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/093.png',
+  isMatched: false
+}, {
+  id: 6,
+  url: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/125.png',
+  isMatched: false
+}, {
+  id: 7,
+  url: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/024.png',
+  isMatched: false
+}, {
+  id: 8,
+  url: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/068.png',
+  isMatched: false
+}, {
+  id: 9,
+  url: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/104.png',
+  isMatched: false
+}, {
+  id: 10,
+  url: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/005.png',
+  isMatched: false
+}, {
+  id: 11,
+  url: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/073.png',
+  isMatched: false
+}, {
+  id: 12,
+  url: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
+  isMatched: false
+}
 ];
 
-start.addEventListener('click', gameState);
-// flipCard.addEventListener('click', playRound);
-var els = document.querySelectorAll('.card-back img');
-
-function changePokemonUrls() {
-  let tiles = [];
-  // grab a random card from pokemonURLS
-  for (let url of pokemonURLS) {
-    tiles.push(url, url);
-  }
-  shuffle(tiles);
-
-  for (var i = 0; i < els.length; i++) {
-    els[i].setAttribute('src', tiles.shift());
-  }
-}
-
-function gameState(e) {
+function startNewGame() {
   console.log('clicked start game');
-  game = true;
-
-  resetGame();
-  for (let card of flipCard) {
-    card.addEventListener('click', function(e) {
-      e.target.parentElement.parentElement.classList.toggle('flipped');
-    });
-  }
-  changePokemonUrls();
+  resetCardState();
+  // TODO shuffleCards();
+  addCardsToPage();
 }
 
+// TODO Refactor this with new approach of storing state!
 function shuffle(array) {
   var currentIndex = array.length,
     temporaryValue,
@@ -74,59 +91,60 @@ function shuffle(array) {
   return array;
 }
 
-function resetGame() {
-  for (let i = 0; i < card.length; i++) {
-    card[i].classList.remove('flipped');
+/**
+ * Distributes the 12 cards into the 24 elements on the page
+ */
+function addCardsToPage() {
+  for (let i = 0; i < 24; i++) {
+    var pokemonPic = document.querySelector(`#card-${i + 1} .card-back`).firstChild;
+
+    // Only 12 pictures, need to distribute them over 24 cards
+    // TODO How can we randomize the card order instead of this? Can we make use of the shuffle method above?
+    // Also, light reading on data attributes: https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
+    if (i > 11) {
+      pokemonPic.setAttribute("src", cards[i - 12].url);
+      pokemonPic.setAttribute("data-card-id", cards[i - 12].id);
+    } else {
+      pokemonPic.setAttribute("src", cards[i].url);
+      pokemonPic.setAttribute("data-card-id", cards[i].id);
+    }
   }
 }
 
-document.querySelectorAll('.pokemon-front').forEach((item) => {
-  item.addEventListener('click', (event) => {
-    console.log('playing the game');
-  });
-});
-
-function playRound() {
-  console.log(e + 'playing the game');
+/**
+ * Sets all cards to not-matched
+ */
+function resetCardState() {
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].isMatched = false;
+  }
 }
 
-// for (let i of card) {
-//   card.addEventListener("click", handleCardClick);
-// }
+/**
+ * Handles the event of a user flipping a card
+ * @param {number} cardId The card that was flipped
+ */
+function handleCardFlip(cardId) {
+  // TODO How do we handle a user flipping a card that was already flipped?
+  // First flip, just hold onto the id
+  if (!selectedCardId) {
+    selectedCardId = cardId;
+  }
 
-// function handleCardClick(e) {
-//   if (!e.target.classList.contains("front")) return;
+  // Second flip, need to compare to first flip
+  else {
+    if (selectedCardId == cardId) {
+      console.log("MATCH!")
+      selectedCardId = null;
+      checkForGameOver();
+    } else {
+      console.log("NO MATCH!")
+      selectedCardId = null;
+      // TODO Need to flip both cards back over
+    }
+  }
+}
 
-//   let currentCard = e.target.parentElement;
-
-//   if (!card1 || !card2) {
-//     if (!currentCard.classList.contains("flipped")) {
-//       setScore(currentScore + 1);
-//     }
-//     currentCard.classList.add("flipped");
-//     card1 = card1 || currentCard;
-//     card2 = currentCard === card1 ? null : currentCard;
-//   }
-
-//   if (card1 && card2) {
-//     let gif1 = card1.children[1].children[0].src;
-//     let gif2 = card2.children[1].children[0].src;
-
-//     if (gif1 === gif2) {
-//       cardsFlipped += 2;
-//       card1.removeEventListener("click", handleCardClick);
-//       card2.removeEventListener("click", handleCardClick);
-//       card1 = null;
-//       card2 = null;
-//     } else {
-//       setTimeout(function () {
-//         card1.classList.remove("flipped");
-//         card2.classList.remove("flipped");
-//         card1 = null;
-//         card2 = null;
-//       }, 1000);
-//     }
-//   }
-
-//   if (cardsFlipped === numCards) endGame();
-// }
+function checkForGameOver() {
+  // TODO What can we use to determine if all the cards were matched?
+}
