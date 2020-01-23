@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles.css">
+  <title>Pokemon Memory Game</title>
+</head>
+<body>
+  <div id="score-boxes">
+    <div id="best-score">Best Score
+      <div id="best-score-data" class="scores">0</div>
+    </div>
+    <hr>
+    <div id="current-score">Current Score
+      <div id="current-score-data" class="scores">0</div>
+    </div>
+  </div>
+  <div id="game-board">
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg" alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="" alt="picture of cubone"></div>
+    </div>
+    
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png"
+          alt="picture of squirtle"></div>
+    </div>
+    
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg" alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/015.png" alt="picture of beedrill"></div>
+    </div>
+    
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/015.png"
+          alt="picture of beedrill"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/054.png"
+          alt="picture of psyduck"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/054.png"
+          alt="picture of psyduck"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/093.png"
+          alt="picture of haunter"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/093.png"
+          alt="picture of haunter"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/125.png"
+          alt="picture of electabuzz"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/125.png"
+          alt="picture of electabuzz"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
+          alt="picture of pikachu"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
+          alt="picture of pikachu"></div>
+    </div>
+
+    <div id="scoreboard"><button id="start-game" type="submit">Start/Reset</button></div>
+    
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/024.png"
+          alt="picture of arbok"></div>
+    </div>
+    
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/024.png"
+          alt="picture of arbok"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/068.png"
+          alt="picture of machamp"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/068.png"
+          alt="picture of machamp"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/104.png"
+          alt="picture of cubone"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/104.png"
+          alt="picture of cubone"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/005.png"
+          alt="picture of charmeleon"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/005.png"
+          alt="picture of charmeleon"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/073.png"
+          alt="picture of tentacruel"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/073.png"
+          alt="picture of tentacruel"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
+          alt="picture of bulbasaur"></div>
+    </div>
+
+    <div class="the-card">
+      <div class="card-front"><img class="pokemon-front" src="https://fontmeme.com/images/Pokemon-Logo.jpg"
+          alt="Pokemon logo"></div>
+      <div class="card-back"><img class="pokemon-pic" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
+          alt="picture of bulbasaur"></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
